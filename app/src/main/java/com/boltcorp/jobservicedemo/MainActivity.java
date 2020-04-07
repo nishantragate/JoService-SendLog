@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,11 +18,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button mStartJobButton = findViewById(R.id.startJob);
-        mStartJobButton.setOnClickListener(new View.OnClickListener() {
+        if(!TestService.isJobScheduled){
+            TestService.scheduleTestJob(getApplicationContext());
+        }
+
+        final Button mStopJobButton = findViewById(R.id.stopJob);
+        mStopJobButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                TestService.scheduleTestJob(getApplicationContext());
-                Log.d(TAG, "onClick: request to start test service");
+                Log.d(TAG, "onClick: request to stop test service");
+                TestService.cancelJob(getApplicationContext());
+            }
+        });
+
+        final Button mSendLogsButton = findViewById(R.id.sendLogs);
+        final TextView mTextView = findViewById(R.id.textView);
+        mSendLogsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: request to send logs");
             }
         });
     }

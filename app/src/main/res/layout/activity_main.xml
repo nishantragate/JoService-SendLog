@@ -6,12 +6,27 @@
     tools:context=".MainActivity"
     android:gravity="center">
 
+    <Button
+    android:id="@+id/sendLogs"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="200dp"
+    android:text="@string/send_logs"
+    tools:ignore="ButtonStyle"
+    />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/startJob"
+        android:id="@+id/stopJob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/start_job_service"
-        tools:ignore="ButtonStyle" />
+        android:layout_marginBottom="200dp"
+        android:text="@string/stop_job_service"
+        tools:ignore="ButtonStyle"
+        />
 
 </LinearLayout>
